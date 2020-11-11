@@ -1,4 +1,4 @@
-let loggedInHelper = require("../loggedIn");
+let loggedInHelper = require("../AuthHandler");
 const db = require('../models/db')
 
 // function isLoggedIn (req,res) {

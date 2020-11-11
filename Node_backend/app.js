@@ -50,6 +50,13 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
+
+  //Unauthorized handling
+  if (err.name === 'UnauthorizedError') {
+    res.status(401);
+    res.json({"message" : err.name + ": " + err.message});
+  }
+
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
