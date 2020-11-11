@@ -14,6 +14,40 @@ function isLoggedIn (req,res) {
     return true;
 }
 
+
+/* POST add exercise to workout */
+module.exports.addExercise = async (req, res) => {
+    console.log("workoutcontroller addExercise POST")
+    if(!isLoggedIn(req,res))
+        return;
+
+    console.log(req.body.workoutId)
+    console.log(req.body.exerciseId)
+
+    let workoutId = req.body.workoutId;
+    let exerciseId = req.body.exerciseId;
+
+    let user = await db.User.findById(req.session.userId).exec();
+
+    let workout = user.workouts.id(workoutId);
+    let exercise = user.exercises.id(exerciseId);
+    exercise.userExerciseId = exercise.id;
+
+    workout.exercises.push(exercise);
+
+    // Save the new model instance, passing a callback
+    try {
+        await user.save();
+        console.log("Added exercise to workout : " + workout.name);
+        res.json({success: true});
+    } catch (error) {
+        console.log(error)
+        res.json({success: false});
+    }
+    res.json({success: false});
+    
+}
+
 /* GET list of workouts */
 module.exports.listWorkouts = async function (req, res) {
     console.log("workoutcontroller GET")
@@ -50,72 +84,15 @@ module.exports.listWorkouts = async function (req, res) {
             }
         }
         
-
-        res.render('workout-list', {
-            workouts
+        res.status(200);
+        res.json({
+            "workouts" : workouts
         });
     }
 };
 
-/* GET add Workout form */
-module.exports.addWorkoutForm = async function (req, res) {
-    console.log("workoutcontroller GET FORM")
-    if(!isLoggedIn(req,res))
-        return;
 
-    let user = await db.User.findById(req.session.userId);
-    let userExercises = user.exercises;
-    console.log("render form");
-
-    res.render('workout-add', {
-        addedexercises: [],
-        notaddedexercises: userExercises
-    });
-};
-
-/* GET add Workout form */
-module.exports.details = async (req, res) => {
-    console.log("workoutcontroller details GET FORM")
-    if(!isLoggedIn(req,res))
-        return;
-
-    let user = await db.User.findById(req.session.userId);
-    let workoutId = req.query.workoutId;
-    let workout = user.workouts.id(workoutId);
-    let workoutExercises = workout.exercises;
-    let userExercises = user.exercises;
-    let notAddedExercises = [];
-    let alreadyExists = false;
-
-    for(let i = 0; i < userExercises.length;i++)
-    {
-
-        alreadyExists = false;
-        for (let j = 0; j < workoutExercises.length; j++)
-        {
-            console.log("userExerciseId = " + workoutExercises[j].userExerciseId)
-            console.log(userExercises[i].id)
-            if (workoutExercises[j].userExerciseId == userExercises[i].id){
-                alreadyExists = true;
-                console.log("Exercise already exists: " + userExercises[i].name)
-            }
-        }
-        
-        if (!alreadyExists){
-            console.log("adding exercise: #" + i);
-            notAddedExercises.push(userExercises[i]);
-        }
-    }
-
-    res.render('workout-details', {
-        id: workoutId,
-        name : workout.name,
-        addedexercises: workoutExercises,
-        notaddedexercises: notAddedExercises
-    });
-};
-
-/* POST add workout form */
+/* POST add workout */
 module.exports.addWorkout = async (req, res) => {
     if(!isLoggedIn(req,res))
         return;
@@ -151,6 +128,65 @@ module.exports.addWorkout = async (req, res) => {
         res.json({success: false});
     }
 }
+
+// /* GET add Workout form */
+// module.exports.addWorkoutForm = async function (req, res) {
+//     console.log("workoutcontroller GET FORM")
+//     if(!isLoggedIn(req,res))
+//         return;
+
+//     let user = await db.User.findById(req.session.userId);
+//     let userExercises = user.exercises;
+//     console.log("render form");
+
+//     res.render('workout-add', {
+//         addedexercises: [],
+//         notaddedexercises: userExercises
+//     });
+// };
+
+// /* GET add Workout form */
+// module.exports.details = async (req, res) => {
+//     console.log("workoutcontroller details GET FORM")
+//     if(!isLoggedIn(req,res))
+//         return;
+
+//     let user = await db.User.findById(req.session.userId);
+//     let workoutId = req.query.workoutId;
+//     let workout = user.workouts.id(workoutId);
+//     let workoutExercises = workout.exercises;
+//     let userExercises = user.exercises;
+//     let notAddedExercises = [];
+//     let alreadyExists = false;
+
+//     for(let i = 0; i < userExercises.length;i++)
+//     {
+
+//         alreadyExists = false;
+//         for (let j = 0; j < workoutExercises.length; j++)
+//         {
+//             console.log("userExerciseId = " + workoutExercises[j].userExerciseId)
+//             console.log(userExercises[i].id)
+//             if (workoutExercises[j].userExerciseId == userExercises[i].id){
+//                 alreadyExists = true;
+//                 console.log("Exercise already exists: " + userExercises[i].name)
+//             }
+//         }
+        
+//         if (!alreadyExists){
+//             console.log("adding exercise: #" + i);
+//             notAddedExercises.push(userExercises[i]);
+//         }
+//     }
+
+//     res.render('workout-details', {
+//         id: workoutId,
+//         name : workout.name,
+//         addedexercises: workoutExercises,
+//         notaddedexercises: notAddedExercises
+//     });
+// };
+
 
 // /* POST add workout form */
 // module.exports.removeExercise = async (req, res) => {
@@ -207,36 +243,3 @@ module.exports.addWorkout = async (req, res) => {
 //     res.json({success: false});
 
 // }
-
-/* POST add student form */
-module.exports.addExercise = async (req, res) => {
-    console.log("workoutcontroller addExercise POST")
-    if(!isLoggedIn(req,res))
-        return;
-
-    console.log(req.body.workoutId)
-    console.log(req.body.exerciseId)
-
-    let workoutId = req.body.workoutId;
-    let exerciseId = req.body.exerciseId;
-
-    let user = await db.User.findById(req.session.userId).exec();
-
-    let workout = user.workouts.id(workoutId);
-    let exercise = user.exercises.id(exerciseId);
-    exercise.userExerciseId = exercise.id;
-
-    workout.exercises.push(exercise);
-
-    // Save the new model instance, passing a callback
-    try {
-        await user.save();
-        console.log("Added exercise to workout : " + workout.name);
-        res.json({success: true});
-    } catch (error) {
-        console.log(error)
-        res.json({success: false});
-    }
-    res.json({success: false});
-    
-}

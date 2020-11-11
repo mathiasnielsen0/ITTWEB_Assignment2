@@ -4,10 +4,8 @@ var session = require('express-session');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const layouts = require("express-ejs-layouts")
 var bodyParser = require("body-parser")
 
-var indexRouter = require('./routes/index');
 var studentsRouter = require('./routes/students');
 var usersRouter = require('./routes/users');
 var workoutRouter = require('./routes/workout');
@@ -18,8 +16,6 @@ var db = require('./models/db');
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -36,13 +32,9 @@ app.use(function(req, res, next) {
   res.locals.loggedin = req.session.loggedin;
   next();
 });
-app.use(layouts);
 
 
-
-app.use('/', indexRouter);
 app.use('/students', studentsRouter);
-
 app.use('/user', usersRouter);
 app.use('/workout', workoutRouter);
 app.use('/exercise', exerciseRouter);
@@ -55,7 +47,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -64,7 +55,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json({"message" : "error"});
 });
 
 module.exports = app;

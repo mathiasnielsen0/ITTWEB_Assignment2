@@ -2,10 +2,7 @@ var express = require('express');
 var router = express.Router();
 var studentController = require('../controllers/studentController')
 
-/* GET add student form */
-router.get('/add', studentController.addStudentForm);
-
-/* POST add student form */
+/* POST add student grade */
 router.post('/add', studentController.addGrade);
 
 /* GET users listing. */
