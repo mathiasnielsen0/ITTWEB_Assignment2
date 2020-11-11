@@ -3,9 +3,9 @@ var router = express.Router();
 var userController = require('../controllers/userController')
 
 /* POST add user form */
-router.post('/create', userController.AddNewUser);
+router.post('/register', userController.register);
 
-router.post('/login', userController.Login);
+router.post('/login', userController.login);
 
 router.get('/logout', userController.Logout);
 

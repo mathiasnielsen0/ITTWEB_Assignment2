@@ -5,6 +5,7 @@ var exerciseController = require('../controllers/exerciseController')
 var jwt = require('express-jwt');
 var auth = jwt({
 secret: process.env.JWT_SECRET,
+algorithms: ['RS256'],
 userProperty: 'payload'
 });
 

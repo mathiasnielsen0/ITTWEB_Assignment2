@@ -18,7 +18,7 @@ let authhandler = require("../AuthHandler");
 
 
 /* POST add exercise to workout */
-module.exports.addExercise = async (req, res) => {
+module.exports.addExercise = async function(req, res) {
     console.log("workoutcontroller addExercise POST")
 
     authhandler._getAuthor(req, res, function(req, res, userId) {
@@ -97,7 +97,7 @@ module.exports.listWorkouts = async function (req, res) {
 
 
 /* POST add workout */
-module.exports.addWorkout = async (req, res) => {
+module.exports.addWorkout = async function(req, res) {
     // if(!isLoggedIn(req,res))
     //     return;
 

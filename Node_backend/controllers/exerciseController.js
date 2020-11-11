@@ -18,8 +18,9 @@ const db = require('../models/db')
 module.exports.listExercises = async function (req, res) {
     console.log("exercisecontroller GET")
     
-    if(!isLoggedIn(req,res))
-        return;
+    // if(!isLoggedIn(req,res))
+    //     return;
+    if(false){}
     else 
     {
         res.json({

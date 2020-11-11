@@ -30,7 +30,7 @@ var UserSchema = new Schema({
     workouts: [WorkoutSchema]
 });
 
-userSchema.methods.generateJwt = function () {
+UserSchema.methods.generateJwt = function () {
     let expiry = new Date();
     expiry.setDate(expiry.getDate() + 7); // Use 1 hour for better security
     return jwt.sign({
