@@ -1,11 +1,7 @@
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
 const db = require('../models/db')
-let users = []
-let tokenList = [];
 const config = require('../config.json')
 /* GET loginView*/
 

@@ -1,25 +1,25 @@
-//let workouts = [];
-let loggedInHelper = require("../loggedIn");
-const db = require('../models/db')
+// //let workouts = [];
+// let loggedInHelper = require("../loggedIn");
+// const db = require('../models/db')
 
-function isLoggedIn (req,res) {
-    console.log("is user logged in")
-    let user = loggedInHelper.loggedIn(req);
-    if (user == null) {
-        console.log("user is null");
-        res.redirect("/user/login");
-        return false;
-    }
-    console.log("user is not null");
-    return true;
-}
+// function isLoggedIn (req,res) {
+//     console.log("is user logged in")
+//     let user = loggedInHelper.loggedIn(req);
+//     if (user == null) {
+//         console.log("user is null");
+//         res.redirect("/user/login");
+//         return false;
+//     }
+//     console.log("user is not null");
+//     return true;
+// }
 
 
 /* POST add exercise to workout */
 module.exports.addExercise = async (req, res) => {
     console.log("workoutcontroller addExercise POST")
-    if(!isLoggedIn(req,res))
-        return;
+    // if(!isLoggedIn(req,res))
+    //     return;
 
     console.log(req.body.workoutId)
     console.log(req.body.exerciseId)
@@ -51,7 +51,6 @@ module.exports.addExercise = async (req, res) => {
 /* GET list of workouts /workout/list */
 module.exports.listWorkouts = async function (req, res) {
     console.log("workoutcontroller GET")
-
 
     // if(!isLoggedIn(req,res))
     if(false)
@@ -96,8 +95,8 @@ module.exports.listWorkouts = async function (req, res) {
 
 /* POST add workout */
 module.exports.addWorkout = async (req, res) => {
-    if(!isLoggedIn(req,res))
-        return;
+    // if(!isLoggedIn(req,res))
+    //     return;
 
     console.log("workoutcontroller addworkout POST")
     console.log(req.body.name);

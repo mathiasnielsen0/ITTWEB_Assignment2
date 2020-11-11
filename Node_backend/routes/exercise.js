@@ -2,12 +2,18 @@ var express = require('express');
 var router = express.Router();
 var exerciseController = require('../controllers/exerciseController')
 
-router.post('/add', exerciseController.addExercise);
+var jwt = require('express-jwt');
+var auth = jwt({
+secret: process.env.JWT_SECRET,
+userProperty: 'payload'
+});
 
-router.get('/list', exerciseController.listExercises);
+router.post('/add', auth, exerciseController.addExercise);
 
-router.get('/details', exerciseController.details);
+router.get('/list', auth, exerciseController.listExercises);
 
-router.post('/save', exerciseController.save);
+router.get('/details', auth, exerciseController.details);
+
+router.post('/save', auth, exerciseController.save);
 
 module.exports = router; 
