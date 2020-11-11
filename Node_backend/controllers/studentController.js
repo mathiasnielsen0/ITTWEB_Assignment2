@@ -1,12 +1,5 @@
 let students = []; 
 
-/* GET add student form */
-module.exports.addStudentForm = function (req, res) {
-    console.log("studentcontroller GET FORM")
-    res.render('students-add', {
-        title: 'students-add'
-    });
-};
 
 /* POST add student form */
 module.exports.addGrade = async (req,res) => {

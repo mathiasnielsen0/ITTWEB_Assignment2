@@ -48,18 +48,20 @@ module.exports.addExercise = async (req, res) => {
     
 }
 
-/* GET list of workouts */
+/* GET list of workouts /workout/list */
 module.exports.listWorkouts = async function (req, res) {
     console.log("workoutcontroller GET")
 
-    if(!isLoggedIn(req,res))
+
+    // if(!isLoggedIn(req,res))
+    if(false)
         return;
     else {
         let user = await db.User.findById(req.session.userId).exec();
 
         let workouts = [];
 
-        if (user.workouts !== null && user.workouts !== undefined)
+        if (user !== null && user.workouts !== null && user.workouts !== undefined)
         {
             for(let i = 0; i < user.workouts.length; i++){
                 
