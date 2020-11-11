@@ -5,7 +5,7 @@ var studentController = require('../controllers/studentController')
 var jwt = require('express-jwt');
 var auth = jwt({
 secret: process.env.JWT_SECRET,
-algorithms: ['RS256'],
+algorithms: ['HS256'],
 userProperty: 'payload'
 });
 

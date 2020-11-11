@@ -55,19 +55,14 @@ module.exports.addExercise = async function(req, res) {
 module.exports.listWorkouts = async function (req, res) {
     console.log("workoutcontroller GET")
 
-    // if(!isLoggedIn(req,res))
-    if(false)
-        return;
-    else {
-        let user = await db.User.findById(req.session.userId).exec();
-
+    authhandler._getAuthor(req, res, async function(req, res, userId) {
+        let user = await db.User.findById(userId).exec();
+        console.log("listworkouts user", user);
         let workouts = [];
 
         if (user !== null && user.workouts !== null && user.workouts !== undefined)
         {
             for(let i = 0; i < user.workouts.length; i++){
-                
-                
                 let exercisesString = "";
                 
                 for(let j = 0; j < user.workouts[i].exercises.length; j++)
@@ -92,7 +87,7 @@ module.exports.listWorkouts = async function (req, res) {
         res.json({
             "workouts" : workouts
         });
-    }
+    });
 };
 
 
