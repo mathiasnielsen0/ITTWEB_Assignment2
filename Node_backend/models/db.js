@@ -24,7 +24,8 @@ var WorkoutSchema = new Schema({
 })
 
 var UserSchema = new Schema({
-    name: { type: String, required: true , unique: true, index: true},
+    email: { type: String, required: true , unique: true, index: true},
+    name: { type: String, required: false},
     password: { type: String, required: true },
     exercises: [ExerciseSchema],
     workouts: [WorkoutSchema]

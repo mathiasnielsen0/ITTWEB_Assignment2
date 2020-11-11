@@ -21,7 +21,7 @@ let authhandler = require("../AuthHandler");
 module.exports.addExercise = async function(req, res) {
     console.log("workoutcontroller addExercise POST")
 
-    authhandler._getAuthor(req, res, function(req, res, userId) {
+    authhandler._getAuthor(req, res, async function(req, res, userId) {
         console.log("getAuthor", userId)
         console.log(req.body.workoutId)
         console.log(req.body.exerciseId)

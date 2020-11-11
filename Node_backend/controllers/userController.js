@@ -15,6 +15,7 @@ module.exports.Logout = function (req, res) {
 
 
 module.exports.register = async function (req, res) {
+    console.log("register req", req.body);
     if (!req.body.name || !req.body.email || !req.body.password) {
         res.status(400).json({
             "title": "Invalid format",
@@ -24,7 +25,7 @@ module.exports.register = async function (req, res) {
     const user = new db.User();
     user.name = req.body.name;
     user.email = req.body.email;
-    await user.setPassword(req.body.password);
+    user.password = req.body.password;
     user.save(function (err) {
         if (err) {
             res.status(400).json({
@@ -39,6 +40,7 @@ module.exports.register = async function (req, res) {
 };
 
 module.exports.login = async function(req, res) {
+    console.log("login")
     const user = await db.User.findOne({
             email: req.body.email
         })
@@ -48,7 +50,7 @@ module.exports.login = async function(req, res) {
                 "detail": `Failed to find user account because: ${err.message}.`
             })
     );
-    const valid = await user.validPassword(req.body.password);
+    const valid = user.password === req.body.password;
     if (valid) {
         const token = user.generateJwt();
         res.status(200).json({
