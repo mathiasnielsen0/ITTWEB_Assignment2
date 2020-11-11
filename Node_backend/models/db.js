@@ -1,5 +1,6 @@
 var mongoose = require( 'mongoose' );
 const Schema = mongoose.Schema;
+const jwt = require('jsonwebtoken');
 
 const uri = "mongodb+srv://workout_web_assignment:workout_web_assignment@cluster0.i5wkj.azure.mongodb.net/workout_db?retryWrites=true&w=majority";
 
@@ -23,11 +24,24 @@ var WorkoutSchema = new Schema({
 })
 
 var UserSchema = new Schema({
-    name: { type: String, required: true , unique: true, index: true},
+    email: { type: String, required: true , unique: true, index: true},
+    name: { type: String, required: false},
     password: { type: String, required: true },
     exercises: [ExerciseSchema],
     workouts: [WorkoutSchema]
 });
+
+UserSchema.methods.generateJwt = function () {
+    let expiry = new Date();
+    expiry.setDate(expiry.getDate() + 7); // Use 1 hour for better security
+    return jwt.sign({
+    _id: this._id,
+    email: this.email,
+    name: this.name,
+    exp: parseInt(expiry.getTime() / 1000), // as Unix time in seconds
+    // }, "am9uYXRoYW5lcnR5aw=="); // DO NOT KEEP YOUR SECRET IN THE CODE!
+    }, process.env.JWT_SECRET); // DO NOT KEEP YOUR SECRET IN THE CODE!
+};
 
 module.exports.User = mongoose.model('User', UserSchema);
 module.exports.Exercise = mongoose.model('Exercise', ExerciseSchema);

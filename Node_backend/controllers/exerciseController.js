@@ -1,4 +1,4 @@
-let loggedInHelper = require("../loggedIn");
+let loggedInHelper = require("../AuthHandler");
 const db = require('../models/db')
 
 // function isLoggedIn (req,res) {
@@ -18,8 +18,9 @@ const db = require('../models/db')
 module.exports.listExercises = async function (req, res) {
     console.log("exercisecontroller GET")
     
-    if(!isLoggedIn(req,res))
-        return;
+    // if(!isLoggedIn(req,res))
+    //     return;
+    if(false){}
     else 
     {
         res.json({
