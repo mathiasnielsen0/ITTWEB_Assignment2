@@ -4,16 +4,16 @@ var workoutController = require('../controllers/workoutController')
 
 var jwt = require('express-jwt');
 var auth = jwt({
-algorithms: ['RS256'],
-secret: process.env.JWT_SECRET,
-userProperty: 'payload'
+    algorithms: ['HS256'],
+    secret: process.env.JWT_SECRET,
+    userProperty: 'payload'
 });
 
-/* POST add workout form */
+/* POST add workout form */ 
 router.post('/add', auth, workoutController.addWorkout);  
 
 /* POST add workout form */
-router.post('/addExercise', auth, workoutController.addExercise);
+router.post('/addExercise', auth, workoutController.addExercise); 
 
 /* GET users listing. */
 router.get('/list', auth, workoutController.listWorkouts);

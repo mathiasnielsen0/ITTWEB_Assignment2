@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require("body-parser")
 
-var studentsRouter = require('./routes/students');
 var usersRouter = require('./routes/users');
 var workoutRouter = require('./routes/workout');
 var exerciseRouter = require('./routes/exercise');
@@ -21,21 +20,7 @@ var app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser())
-app.use(session({
-  secret: 'secret',
-  resave: true,
-  saveUninitialized: true
-}));
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.use(function(req, res, next) {
-  res.locals.loggedin = req.session.loggedin;
-  next();
-});
-
-
-app.use('/students', studentsRouter);
 app.use('/user', usersRouter);
 app.use('/workout', workoutRouter);
 app.use('/exercise', exerciseRouter);
@@ -56,14 +41,16 @@ app.use(function(err, req, res, next) {
     res.status(401);
     res.json({"message" : err.name + ": " + err.message});
   }
+  else{
+    res.status(err.status || 500);
+    res.json({"message" : err.name + err.message});
+  }
 
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.json({"message" : err.name + err.message});
 });
 
 module.exports = app;
