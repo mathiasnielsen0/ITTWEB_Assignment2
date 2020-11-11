@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const db = require('../models/db')
 const config = require('../config.json')
+let authhandler = require("../AuthHandler");
 /* GET loginView*/
 
 module.exports.Logout = function (req, res) {
@@ -62,6 +63,17 @@ module.exports.login = async function(req, res) {
             "detail": "Wrong password"
         })
     }
+
+};
+
+
+module.exports.get = async function(req, res) {
+
+    authhandler._getAuthor(req, res, async function(req, res, userId) {
+        let user = await db.User.findById(userId).exec();
+
+        res.json({"user" : user});
+    });
 
 };
 

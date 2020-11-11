@@ -1,18 +1,5 @@
-let loggedInHelper = require("../AuthHandler");
 const db = require('../models/db')
-
-// function isLoggedIn (req,res) {
-//     console.log("is user logged in")
-//     let user = loggedInHelper.loggedIn(req);
-//     if (user == null) {
-//         console.log("user is null");
-//         res.redirect("/user/login");
-//         return false;
-//     }
-//     console.log("user is not null");
-//     return true;
-// }
-
+let authhandler = require("../AuthHandler");
 
 /* GET list of exercises */
 module.exports.listExercises = async function (req, res) {
@@ -33,27 +20,27 @@ module.exports.listExercises = async function (req, res) {
 
 //Post 
 module.exports.addExercise = async (req,res) => {
-    console.log("exercisecontroller POST")
-    console.log(req.body.name + ", " + req.body.description)
 
-    let user = await db.User.findById(req.session.userId).exec();
-    var exercise = new db.Exercise();
-    exercise.name = req.body.name;
-    exercise.description = req.body.description;
-    exercise.repetitions = req.body.repetitions;
-    exercise.sets = req.body.sets;
-    
-    user.exercises.push(exercise);
+    authhandler._getAuthor(req, res, async function(req, res, userId) {
+        let user = await db.User.findById(userId).exec();
+        var exercise = new db.Exercise();
+        exercise.name = req.body.name;
+        exercise.description = req.body.description;
+        exercise.repetitions = req.body.repetitions;
+        exercise.sets = req.body.sets;
+        
+        user.exercises.push(exercise);
 
-    // Save the new model instance, passing a callback
-    try {
-        await user.save();
-        res.status(200);
-        res.json({"message": "success"})
-    } catch (error) {
-        console.log(error)
-        res.send("ERROR")
-    }
+        // Save the new model instance, passing a callback
+        try {
+            await user.save();
+            res.status(200);
+            res.json({"message": "success"})
+        } catch (error) {
+            console.log(error)
+            res.send("ERROR")
+        }
+    });
 }
 
 
@@ -63,15 +50,16 @@ module.exports.details = async (req,res) => {
 
     let exerciseId = req.query.exerciseId;
     console.log("Exercise id: " + exerciseId);
+    authhandler._getAuthor(req, res, async function(req, res, userId) {
+        let user = await db.User.findById(userId).exec();
 
-    let user = await db.User.findById(req.session.userId).exec();
+        let exercise = user.exercises.id(exerciseId);
+        console.log(exercise);
 
-    let exercise = user.exercises.id(exerciseId);
-    console.log(exercise);
-
-    res.status(200);
-    res.json({
-        "exercise" : exercise
+        res.status(200);
+        res.json({
+            "exercise" : exercise
+        });
     });
 }
 
@@ -79,27 +67,27 @@ module.exports.details = async (req,res) => {
 module.exports.save = async (req,res) => {
     console.log("exercisecontroller POST")
     // Save the new model instance, passing a callback
-    
-    let user = await db.User.findById(req.session.userId).exec();
-    let exercise = user.exercises.id(req.body.id);
-    console.log(exercise);
-    
-    exercise.name = req.body.name;
-    exercise.description = req.body.description;
-    exercise.repetitions = req.body.repetitions;
-    exercise.sets = req.body.sets;
-
-    // Save the new model instance, passing a callback
-    try {
-        user.save();
-        console.log("Succesfully saved exercise")
-        res.redirect('/exercise/list')
+    authhandler._getAuthor(req, res, async function(req, res, userId) {
+        let user = await db.User.findById(userId).exec();
+        let exercise = user.exercises.id(req.body.id);
+        console.log(exercise);
         
-    } catch (error) {
-        console.log(error)
-        res.redirect('/exercise/details?exerciseId=' + req.body.id)
-    }
+        exercise.name = req.body.name;
+        exercise.description = req.body.description;
+        exercise.repetitions = req.body.repetitions;
+        exercise.sets = req.body.sets;
 
+        // Save the new model instance, passing a callback
+        try {
+            user.save();
+            console.log("Succesfully saved exercise")
+            res.redirect('/exercise/list')
+            
+        } catch (error) {
+            console.log(error)
+            res.redirect('/exercise/details?exerciseId=' + req.body.id)
+        }
 
-    return;
-}
+        return;
+    });
+}   

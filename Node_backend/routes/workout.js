@@ -9,7 +9,7 @@ var auth = jwt({
     userProperty: 'payload'
 });
 
-/* POST add workout form */
+/* POST add workout form */ 
 router.post('/add', auth, workoutController.addWorkout);  
 
 /* POST add workout form */

@@ -7,7 +7,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require("body-parser")
 
-var studentsRouter = require('./routes/students');
 var usersRouter = require('./routes/users');
 var workoutRouter = require('./routes/workout');
 var exerciseRouter = require('./routes/exercise');
@@ -22,7 +21,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/students', studentsRouter);
 app.use('/user', usersRouter);
 app.use('/workout', workoutRouter);
 app.use('/exercise', exerciseRouter);
