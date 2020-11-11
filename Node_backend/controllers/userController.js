@@ -9,43 +9,16 @@ let tokenList = [];
 const config = require('../config.json')
 /* GET loginView*/
 
-
-/* GET user list */
-module.exports.GetUserList = function (req, res) {
-    console.log("userController: GET user lists")
-    res.render("userList", {
-        title: "userList",
-        users
-    })
-};
-
-/* GET add user form */
-module.exports.AddNewUserForm = function (req, res) {
-    console.log("userController: GET New User FORM")
-    res.render('user-add', {
-        title: 'user-add'
-    });
-};
-
-module.exports.UserThankYou = function (req, res) {
-    res.render('userThankYouRegister', {
-        title: "userThankYouRegister"
-    })
-}
-
-module.exports.LoginForm = function (req, res) {
-    res.render("login", {
-        title: "login"
-    })
-}
 module.exports.Logout = function (req, res) {
     req.session.destroy((err) => {
-        res.render("logout", {
-            title: "logout"
+        res.status(200);
+        res.json({
+            "message": "success"
         });
     })
 }
 
+/* Post login*/
 module.exports.Login = async (req, res) => {
     console.log("userController: POST Login")
     let Authorised = false;
@@ -107,3 +80,12 @@ module.exports.AddNewUser = async (req, res) => {
         });
     });
 }
+
+// /* GET user list */
+// module.exports.GetUserList = function (req, res) {
+//     console.log("userController: GET user lists")
+//     res.render("userList", {
+//         title: "userList",
+//         users
+//     })
+// };

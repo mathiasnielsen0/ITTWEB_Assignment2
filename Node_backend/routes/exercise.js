@@ -2,8 +2,6 @@ var express = require('express');
 var router = express.Router();
 var exerciseController = require('../controllers/exerciseController')
 
-router.get('/add', exerciseController.addExerciseForm);
-
 router.post('/add', exerciseController.addExercise);
 
 router.get('/list', exerciseController.listExercises);
