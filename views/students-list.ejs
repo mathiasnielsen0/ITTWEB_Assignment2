@@ -1,0 +1,20 @@
+<h2 class="mb-3">Students</h2>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% for (let i = 0; i < students.length; i++) { %>
+        <tr>
+            <td><%= i %></td>
+            <td><%= students[i].name %></td>
+            <td><%= students[i].grade %></td>
+        </tr>
+        <% }  %>     
+    </tbody>
+</table>

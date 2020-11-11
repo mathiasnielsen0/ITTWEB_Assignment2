@@ -1,0 +1,7 @@
+{
+  "secret": "905b2732c996a36d04c63b194afc79cc69d7b23e",
+  "refreshTokenSecret": "a62f2225bf70bfaccbc7f1ef2a397836717377de",
+  "port": 3000,
+  "tokenLife": 900,
+  "refreshTokenLife": 86400
+}

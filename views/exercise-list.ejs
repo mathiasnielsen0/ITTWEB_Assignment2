@@ -1,0 +1,33 @@
+<head>
+    <script src="/javascripts/clickable-rows-exercise.js"></script>  
+</head>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <div class="centerize-content">
+            Exercises
+        </div>
+        <a class="btn btn-primary" href="/exercise/add">Create new</a>
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Repetitions</th>
+                    <th scope="col">Sets</th>
+                </tr>
+            </thead>
+            <tbody href="#">
+                <% for (let i = 0; i < exercises.length; i++) { %>
+                    <tr class="clickable-row" href="#" title="Go to details" data-href="<%= exercises[i].id %>">
+                        <td><%= exercises[i].name %></td>
+                        <td><%= exercises[i].repetitions %></td>
+                        <td><%= exercises[i].sets %></td>
+                    </tr>
+                <% }  %>  
+            </tbody>
+        </table>
+    </div>
+</div>
+
