@@ -1,5 +1,6 @@
 <h2>All Workouts</h2>
 
-<div *ngFor="let workout of workouts">
-    <p>{{ workout }}</p>
+<div *ngFor="let workout of workouts; let i = index">
+    <p>{{ workout.name }}</p>
+    <p>{{ workout.exercises[i]?.name }}</p>
 </div>
