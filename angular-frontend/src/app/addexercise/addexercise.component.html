@@ -4,22 +4,22 @@
 </div>
 
 <div class="panel panel-default panel-body mt-3">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name" name="name" placeholder="Enter name of exercise">
-        </div>
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
-        </div>
-        <div class="form-group">
-          <label for="repetitions">Repetitions</label>
-          <input type="number" class="form-control col-lg-5 col-md-5 col-sm-6" id="repetitions" name="repetitions" placeholder="Number of repetitions">
-        </div>
-        <div class="form-group">
-          <label for="sets">Sets</label>
-          <input type="number" class="form-control col-lg-5 col-md-5 col-sm-6" id="sets" name="sets" placeholder="Number of sets">
-        </div>
-        <a class="btn btn-primary">Submit</a>
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" [formControl]="name" id="name" name="name" placeholder="Enter name of exercise">
+  </div>
+  <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" [formControl]="description" name="description" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="repetitions">Repetitions</label>
+    <input type="number" class="form-control col-lg-5 col-md-5 col-sm-6" id="repetitions" [formControl]="repetitions" name="repetitions" placeholder="Number of repetitions">
+  </div>
+  <div class="form-group">
+    <label for="sets">Sets</label> 
+    <input type="number" class="form-control col-lg-5 col-md-5 col-sm-6" id="sets" name="sets" [formControl]="sets" placeholder="Number of sets">
+  </div>
+  <button class="btn btn-primary" (click)="submitExercise()">Submit</button>
 </div>
 
