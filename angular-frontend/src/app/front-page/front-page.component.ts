@@ -11,7 +11,9 @@ export class FrontPageComponent implements OnInit {
   constructor(private _http: WorkoutService) { }
 
   ngOnInit(): void {
-    this._http.getAllWorkouts().subscribe;
+    this._http.getAllWorkouts().subscribe((workouts) => {
+      workouts = workouts
+    });
   }
 
 }
