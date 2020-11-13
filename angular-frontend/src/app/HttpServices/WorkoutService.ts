@@ -11,9 +11,9 @@ export default class WorkoutService {
     constructor(private http: HttpClient) {
         
     }
-    public getAllWorkouts(): Observable<{ workouts : Workout[] }> {
-        const url = "http://localhost:3000/workout/list";
-        return this.http.get<{ workouts: Workout[] }>(url);
-      }
+  
+    getAllWorkouts() : Observable<{workouts: Workout[]}>{
+        return this.http.get<{workouts: Workout[]}>('http://localhost:3000/workout/list');
+    }
 
 }
