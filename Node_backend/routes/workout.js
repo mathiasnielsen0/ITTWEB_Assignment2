@@ -16,6 +16,9 @@ router.post('/add', auth, workoutController.addWorkout);
 router.post('/addExercise', auth, workoutController.addExercise); 
 
 /* GET users listing. */
-router.get('/list', auth, workoutController.listWorkouts);
+router.get('/listUser', auth, workoutController.listUserWorkouts);
+
+/* GET users listing. */
+router.get('/list', workoutController.listWorkouts);
 
 module.exports = router;
