@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
 
           // @ts-ignore
           localStorage.setItem('token', data.token);
-          this.router.navigate(['/workout']);
+          this.router.navigate(['/front-page']);
         },
         error: err => {
           console.log(err);

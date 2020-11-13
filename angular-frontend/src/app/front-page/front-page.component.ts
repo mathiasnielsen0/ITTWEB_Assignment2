@@ -11,7 +11,7 @@ import {AuthService} from '../AuthService/AuthService'
 @Injectable()
 export class FrontPageComponent implements OnInit {
   workouts:Workout[] = []
-  private isLoggedIn:boolean = false;
+  isLoggedIn:boolean = false;
   constructor(private _http: WorkoutService, private _authService: AuthService) { }
 
   ngOnInit(): void {
