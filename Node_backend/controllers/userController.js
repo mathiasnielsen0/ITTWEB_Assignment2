@@ -58,7 +58,7 @@ module.exports.login = async function(req, res) {
             "token": token
         });
     } else {
-        res.status(401).json({
+        res.status(400).json({
             "title": "Unauthorized",
             "detail": "Wrong password"
         })
@@ -147,7 +147,7 @@ module.exports.AddNewUser = async (req, res) => {
             var user = new db.User();
             user.name = req.body.name;
             user.password = hash;
-            
+
             // Save the new model instance, passing a callback
                 user.save(function(err, user) {
                     if (err) {

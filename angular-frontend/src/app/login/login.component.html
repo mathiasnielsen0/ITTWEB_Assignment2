@@ -15,6 +15,9 @@
   <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
     Password is required
   </div>
+  <div [innerText]="message" [hidden]="message.trim().length < 1" class="alert alert-danger">
+
+  </div>
 </div>
 <button id="submitButton" type="submit" class="btn btn-primary">Login</button>
 </form>
