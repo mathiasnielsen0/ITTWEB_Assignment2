@@ -8,7 +8,9 @@ import {AuthService} from './AuthService/AuthService';
 })
 export class AppComponent {
   title = 'WorkIt';
+  isLoggedIn:boolean = false;
   constructor(authService: AuthService) {
+    this.isLoggedIn = authService.isLoggedIn();
     console.log(authService.isLoggedIn());
   }
 }
