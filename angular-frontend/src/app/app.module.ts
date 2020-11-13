@@ -11,10 +11,11 @@ import { AddworkoutComponent } from './addworkout/addworkout.component';
 import { RegisterComponent } from './register/register.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FrontPageComponent } from './front-page/front-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AuthInterceptor} from './AuthService/AuthIntercepter';
+import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
 
 @NgModule({
   declarations: [
@@ -45,8 +46,20 @@ import { ReactiveFormsModule } from '@angular/forms';
       {path: '', redirectTo: '/front-page', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
+    FormsModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenExpiredInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
