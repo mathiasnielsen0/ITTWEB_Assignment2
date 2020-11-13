@@ -10,6 +10,8 @@ import { AddworkoutComponent } from './addworkout/addworkout.component';
 import { RegisterComponent } from './register/register.component';
 import { WorkoutComponent } from './workout/workout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FrontPageComponent } from './front-page/front-page.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AddworkoutComponent,
     LoginComponent,
     RegisterComponent,
+    FrontPageComponent,
+    HttpClientModule,
     PageNotFoundComponent
   ],
   imports: [
@@ -31,7 +35,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       {path: "workout/add", component : AddworkoutComponent },
       {path: "login", component : LoginComponent },
       {path: "register", component : RegisterComponent },
-      {path: '', redirectTo: '/workout', pathMatch: 'full'},
+      {path: 'front-page', component: FrontPageComponent},
+      {path: '', redirectTo: '/front-page', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
   ],
