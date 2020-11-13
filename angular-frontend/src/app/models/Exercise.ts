@@ -1,6 +1,6 @@
-export default interface Exercise {
-    name: String,
-    description: String,
-    repetitions: Number,
-    sets: Number,
+export default class Exercise {
+    name: String;
+    description: String;
+    repetitions: Number;
+    sets: Number;
 }
