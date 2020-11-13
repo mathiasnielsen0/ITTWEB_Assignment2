@@ -12,15 +12,8 @@ export default class WorkoutService {
         
     }
   
-    getAllWorkouts() : Observable<Workout[]>{
-
-        const options = {
-            headers: new HttpHeaders({
-                'Content-Type':  'application/json'
-            })
-        };
-
-        return this.http.get<Workout[]>('http://localhost:3000/workout/list',options).pipe();
+    getAllWorkouts() : Observable<{workouts: Workout[]}>{
+        return this.http.get<{workouts: Workout[]}>('http://localhost:3000/workout/list');
     }
 
 }

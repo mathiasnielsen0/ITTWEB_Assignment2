@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { AddexerciseComponent } from './addexercise/addexercise.component';
+import { ExercisedetailsComponent } from './exercisedetails/exercisedetails.component';
 import { AddworkoutComponent } from './addworkout/addworkout.component';
 import { RegisterComponent } from './register/register.component';
 import { WorkoutComponent } from './workout/workout.component';
@@ -22,6 +23,7 @@ import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
     ExerciseComponent,
     WorkoutComponent,
     AddexerciseComponent,
+    ExercisedetailsComponent,
     AddworkoutComponent,
     LoginComponent,
     RegisterComponent,
@@ -33,12 +35,13 @@ import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: "exercise", component: ExerciseComponent},
-      {path: "exercise/add", component: AddexerciseComponent},
-      {path: "workout", component: WorkoutComponent},
-      {path: "workout/add", component: AddworkoutComponent},
-      {path: "login", component: LoginComponent},
-      {path: "register", component: RegisterComponent},
+      {path: "exercise", component : ExerciseComponent },
+      {path: "exercise-details/:id", component : ExercisedetailsComponent },
+      {path: "exercise/add", component : AddexerciseComponent },
+      {path: "workout", component : WorkoutComponent },
+      {path: "workout/add", component : AddworkoutComponent },
+      {path: "login", component : LoginComponent },
+      {path: "register", component : RegisterComponent },
       {path: 'front-page', component: FrontPageComponent},
       {path: '', redirectTo: '/front-page', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}

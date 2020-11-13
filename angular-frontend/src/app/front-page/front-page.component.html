@@ -1,5 +1,10 @@
-<h2>All Workouts</h2>
+<h1>Welcome to WorkIt</h1>
+<h2>Get your work on, and workout with inspiration of tons of workouts created by other users</h2>
 
-<div *ngFor="let workout of workouts">
-    <p>{{ workout }}</p>
+<h3 class="bold">Workouts</h3>
+<div *ngFor="let workout of workouts; let i = index">
+    <button class="collapsible">{{ workout.name }}</button>
+    <div class="content">
+        <p>{{ workout.exercises[i]?.name }}</p>
+    </div>
 </div>
