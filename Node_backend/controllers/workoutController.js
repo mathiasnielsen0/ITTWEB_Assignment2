@@ -100,29 +100,19 @@ module.exports.addWorkout = async function(req, res) {
 
     authhandler._getAuthor(req, res, async function(req, res, userId) {
         console.log("workoutcontroller addworkout POST")
-        console.log(req.body.name);
-        console.log(req.body.exerciseIds);
-        let user = await db.User.findById(userId).exec();
+        const user = await db.User.findById(userId).exec();
 
-        let newWorkout = new db.Workout();
+        const newWorkout = new db.Workout();
 
         newWorkout.name = req.body.name;
-
-        for (let i = 0; i < req.body.exerciseIds.length; i++)
-        {
-            console.log("current id = " + req.body.exerciseIds[i])
-            let exercise =  exercises.id(req.body.exerciseIds[i]);
-            exercise.userExerciseId = req.body.exerciseIds[i];
-            console.log("req.body.exerciseIds[i] = " + req.body.exerciseIds[i]);
-            newWorkout.exercises.push(exercise);
-            console.log("tesdfsdfsd")
+        for (let i = 0; i < req.body.exercises.length; i++) {
+            newWorkout.exercises.push(req.body.exercises[i]);
         }
 
-         workouts.push(newWorkout);
-
-        // Save the new model instance, passing a callback
+        user.workouts.push(newWorkout)
+        // Save the new model instance, passing a callback 
         try {
-            await  save();
+            await user.save();
             console.log("Everything was succesful");
             res.json({success: true});
         } catch (error) {
