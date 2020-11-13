@@ -12,7 +12,9 @@ export class FrontPageComponent implements OnInit {
 
   ngOnInit(): void {
     this._http.getAllWorkouts().subscribe((workouts) => {
-      workouts = workouts
+      console.log("getAllWorkouts")
+      console.log(workouts)
+      this.workouts = workouts
     });
   }
 

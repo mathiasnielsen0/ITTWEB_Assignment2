@@ -16,8 +16,7 @@ export default class WorkoutService {
 
         const options = {
             headers: new HttpHeaders({
-                'Content-Type':  'application/json',
-                'Access-Control-Allow-Origin': '*'
+                'Content-Type':  'application/json'
             })
         };
 
