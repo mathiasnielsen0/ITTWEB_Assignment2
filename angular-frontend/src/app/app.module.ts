@@ -14,7 +14,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 @NgModule({
   declarations: [
     AppComponent,
+    ExerciseComponent,
+    WorkoutComponent,
+    AddexerciseComponent,
+    AddworkoutComponent,
     LoginComponent,
+    RegisterComponent,
     PageNotFoundComponent
   ],
   imports: [
