@@ -25,5 +25,4 @@ export class ExerciseService {
 
     return this.http.post('http://localhost:3000/exercise/add',body,options).toPromise();
   }
-
 }

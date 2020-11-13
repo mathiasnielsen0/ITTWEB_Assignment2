@@ -23,8 +23,6 @@ export class AddexerciseComponent implements OnInit {
     // Process checkout data here
     // this.exerciseForm.reset();
     
-    console.log('exercise has been submitted', this.name.value, this.description.value, this.repetitions.value, this.sets.value);
-
     let exercise = new Exercise();
     exercise.name = this.name.value as string;
     exercise.description = this.description.value as string;
