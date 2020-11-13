@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {environment} from '../../environments/environment';
-import {Observable} from "rxjs";
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       observe: 'response',
       body: {email: this.mail.value, password: this.password.value}
     };
-    this.client.post<JSON>(environment.backendUrl, httpOptions ).subscribe({
+    this.client.post<JSON>(environment.backendUrl + 'user/login', httpOptions ).subscribe({
       next: data => {
         console.log(data);
       },
