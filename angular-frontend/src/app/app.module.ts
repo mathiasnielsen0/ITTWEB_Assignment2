@@ -26,7 +26,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     RouterModule.forRoot([
       {path: "exercise", component : ExerciseComponent },
-      {path: "exercise/add", component : AddexerciseComponent },
+      {path: "addexercise", component : AddexerciseComponent },
       {path: "workout", component : WorkoutComponent },
       {path: "addworkout", component : AddworkoutComponent },
       {path: "login", component : LoginComponent },
