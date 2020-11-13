@@ -36,9 +36,12 @@
                 class="btn btn-outline-dark"><i class="fa fa-chevron-right"></i></a>
         </div>
         <div id="exercises-picker-right">
+            <div *ngFor="let ep of pickedExercises" class="exercises-picker-item added centerize-content">
+                {{ ep.name }} 
+            </div>
         </div>
     </div>
-    <a type="button" id="create-btn" class="btn btn-primary">Create</a>
+    <a type="button" (click)="submit()" class="btn btn-primary">Create</a>
 </div>
 
   
