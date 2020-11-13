@@ -11,8 +11,13 @@
   <a  class="btn btn-default" routerLink="/exercise">Exercise</a>
   <a  class="btn btn-default" routerLink="/front-page">Workout</a>
     <div class="spacer"></div>
-    <a class="btn btn-primary btn-inverse login-btn" routerLink="/login">Login</a>
-    <a class="btn btn-primary btn-inverse login-btn" routerLink="/register">Register</a>
+    <div *ngIf="!isLoggedIn">
+      <a class="btn btn-primary btn-inverse login-btn" routerLink="/login">Login</a>
+      <a class="btn btn-primary btn-inverse login-btn" routerLink="/register">Register</a>
+    </div>
+    <div *ngIf="isLoggedIn">
+      <a class="btn btn-primary btn-inverse login-btn" (click)="logout()">Logout</a>
+    </div>
 </div>
 
 <div class="content" role="main">
