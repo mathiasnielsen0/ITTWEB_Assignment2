@@ -12,6 +12,8 @@ import { WorkoutComponent } from './workout/workout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FrontPageComponent } from './front-page/front-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { FrontPageComponent } from './front-page/front-page.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       {path: "exercise", component : ExerciseComponent },
       {path: "exercise/add", component : AddexerciseComponent },
