@@ -25,4 +25,10 @@ export class ExerciseService {
 
     return this.http.post('http://localhost:3000/exercise/add',body,options).toPromise();
   }
+
+
+  public getExercises(): Observable<{ exercises : Exercise[] }> {
+    const url = "http://localhost:3000/exercise/list";
+    return this.http.get<{ exercises: Exercise[] }>(url);
+  }
 }
