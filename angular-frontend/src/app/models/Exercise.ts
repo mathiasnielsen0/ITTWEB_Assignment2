@@ -3,5 +3,4 @@ export default interface Exercise {
     description: String,
     repetitions: Number,
     sets: Number,
-    userExerciseId: String
 }
