@@ -25,12 +25,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     FrontPageComponent,
-    HttpClientModule,
     PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: "exercise", component : ExerciseComponent },
       {path: "exercise/add", component : AddexerciseComponent },
