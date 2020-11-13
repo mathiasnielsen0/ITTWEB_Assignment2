@@ -21,7 +21,7 @@ export default class WorkoutService {
     const options = {
         headers: new HttpHeaders({
             'Content-Type':  'application/json',
-            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFlNjVlYTM3MDYwZjcxZjBiOWI5MmIiLCJlbWFpbCI6InRlc3QiLCJleHAiOjE2MDU4Njk5MTYsImlhdCI6MTYwNTI2NTExNn0.EVWHKeiWbGHMbdW_LcdAIck_zopfsQ3VVkzEoGkE_Lk'
+            Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZmFjMGQ1NjRjZmNiZTQ2ZWExZWU0Y2UiLCJlbWFpbCI6ImFkbWluQGFkbWluLmRrIiwibmFtZSI6InNrZWRlIiwiZXhwIjoxNjA1ODkwNjI5LCJpYXQiOjE2MDUyODU4Mjl9.L9nRudEy1A_6HcO3E0x--7zUCv9wY0OKR3OI5vgd5pg'
         })
     };
 

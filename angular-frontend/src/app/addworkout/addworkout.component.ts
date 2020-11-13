@@ -15,8 +15,8 @@ import Exercise from "../models/Exercise"
 export class AddworkoutComponent implements OnInit {
 
   name = new FormControl('');
-  exercises: Exercise[];
-  pickedExercises;
+  exercises: Exercise[] = [];
+  pickedExercises: Exercise[] = [];
 
   constructor (private _http: WorkoutService, private _http_exercise: ExerciseService, private router: Router) {}
 
@@ -34,6 +34,20 @@ export class AddworkoutComponent implements OnInit {
   }
 
   addExercise(e: Exercise){
+    this.pickedExercises.push(e);
+    let index = this.exercises.indexOf(e);
+    if (index > -1) {
+      this.exercises.splice(index, 1);
+    }
+  }
+
+  submit(){
+    let workout = new Workout();
+    workout.exercises = this.pickedExercises as [Exercise];
+    workout.name = this.name.value as String;
+
+    this._http.addWorkout(workout);
+
   }
 
 }
