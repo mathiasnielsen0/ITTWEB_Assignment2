@@ -16,11 +16,11 @@ export default class WorkoutService {
 
         const options = {
             headers: new HttpHeaders({
-              'Content-Type':  'application/json'
+                'Content-Type':  'application/json'
             })
-          };
+        };
 
-        return this.http.get<Workout[]>('/workout/list',options).pipe();
+        return this.http.get<Workout[]>('http://localhost:3000/workout/list',options).pipe();
     }
 
 }
