@@ -1,36 +1,27 @@
 
 <div class="header-container">
-    <h4>Exercises</h4>
+    <h2>Exercises</h2>
     <a class="btn btn-primary" routerLink="/exercise/add">Add exercise</a>
 </div>
 
-<table class="table">
+
+<table *ngIf="exercises" class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Name</th>
+        <th scope="col">Sets</th>
+        <th scope="col">Repetitions</th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
+      <tr *ngFor="let e of exercises; index as i"> 
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ e.name }}</td>
+        <td>{{ e.sets }}</td>
+        <td>{{ e.repetitions }}</td>
+        <td><a class="btn btn-primary pull-right" routerLink="/exercise/{{e._id}}">Details</a></td>
       </tr>
     </tbody>
   </table>
