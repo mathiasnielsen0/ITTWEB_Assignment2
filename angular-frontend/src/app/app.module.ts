@@ -12,7 +12,7 @@ import { WorkoutComponent } from './workout/workout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FrontPageComponent } from './front-page/front-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -32,16 +32,17 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      {path: "exercise", component : ExerciseComponent },
-      {path: "exercise/add", component : AddexerciseComponent },
-      {path: "workout", component : WorkoutComponent },
-      {path: "workout/add", component : AddworkoutComponent },
-      {path: "login", component : LoginComponent },
-      {path: "register", component : RegisterComponent },
+      {path: "exercise", component: ExerciseComponent},
+      {path: "exercise/add", component: AddexerciseComponent},
+      {path: "workout", component: WorkoutComponent},
+      {path: "workout/add", component: AddworkoutComponent},
+      {path: "login", component: LoginComponent},
+      {path: "register", component: RegisterComponent},
       {path: 'front-page', component: FrontPageComponent},
       {path: '', redirectTo: '/front-page', pathMatch: 'full'},
       {path: '**', component: PageNotFoundComponent}
     ]),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
