@@ -12,7 +12,6 @@ export class AddexerciseComponent implements OnInit {
   repetitions = new FormControl('');
   sets = new FormControl('');
 
-
   constructor () {}
 
   ngOnInit(): void {
