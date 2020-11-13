@@ -1,17 +1,26 @@
 import { Injectable } from '@angular/core'
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { Observable } from 'rxjs';
+import Workout from '../models/Workout'
 
 @Injectable({
   providedIn: 'root'
 })
-export class WorkoutService {
+export default class WorkoutService {
 
-  constructor(private http: HttpClient) {
-    
-  }
+    constructor(private http: HttpClient) {
+        
+    }
+  
+    getAllWorkouts() : Observable<Workout[]>{
 
-  // getBeer() {
-  //   return this.http.get('https..asdasdasd..');
-  // }
+        const options = {
+            headers: new HttpHeaders({
+              'Content-Type':  'application/json'
+            })
+          };
+
+        return this.http.get<Workout[]>('/workout/list',options).pipe();
+    }
 
 }

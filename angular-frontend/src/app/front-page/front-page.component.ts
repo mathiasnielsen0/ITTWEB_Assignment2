@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import WorkoutService from '../HttpServices/WorkoutService'
 
 @Component({
   selector: 'app-front-page',
@@ -7,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FrontPageComponent implements OnInit {
   workouts = []
-  constructor() { }
+  constructor(private _http: WorkoutService) { }
 
   ngOnInit(): void {
-    this.workouts = ["hej"]
+    this._http.getAllWorkouts().subscribe;
   }
 
 }
