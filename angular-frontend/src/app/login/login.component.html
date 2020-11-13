@@ -1,14 +1,23 @@
 
 <h2>Login</h2>
-
+<form (ngSubmit)="submit()">
 <div class="form-group">
-    <label for="name">Email</label>
-    <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter email">
+    <label for="mail">Email</label>
+    <input type="text" required="required" class="form-control" [formControl]="mail"  id="mail" name="mail" aria-describedby="nameHelp" placeholder="Enter email"
+           pattern='(?:[a-z0-9!#$%&*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])'>
+  <div [hidden]="mail.valid || mail.pristine" class="alert alert-danger">
+    Mail is required
+  </div>
 </div>
 <div class="form-group">
-    <label >Password</label>
-    <input type="password" id="grade" class="form-control" name="password" placeholder="Enter password" >
+    <label for="password">Password</label>
+    <input type="password" required="required" id="password" class="form-control" [formControl]="password" name="password" placeholder="Enter password" pattern="(.|\s)*\S(.|\s)*" >
+  <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+    Password is required
+  </div>
+  <div [innerText]="message" [hidden]="message.trim().length < 1" class="alert alert-danger">
+
+  </div>
 </div>
-<a class="btn btn-primary">Login</a>
-
-
+<button id="submitButton" type="submit" class="btn btn-primary">Login</button>
+</form>

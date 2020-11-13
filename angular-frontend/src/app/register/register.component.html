@@ -1,12 +1,40 @@
 <h2>Register User</h2>
 
-<div class="form-group">
-    <label for="name">Email</label>
-    <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter email">
-</div>
-<div class="form-group">
-    <label for="grade">Password</label>
-    <input type="password" id="grade" class="form-control" name="password" placeholder="Enter password" required>
-</div>
+<form (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input type="text" [formControl]="name" class="form-control" id="name" name="name" placeholder="Enter name">
+  </div>
+  <div>
+    <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+      Mail is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="mail">Email</label>
+    <input type="email" [formControl]="mail" class="form-control" id="mail" name="mail" placeholder="Enter email">
+  </div>
+  <div>
+    <div [hidden]="mail.valid || mail.pristine" class="alert alert-danger">
+      Mail is required
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password1">Password</label>
+    <input type="password" [formControl]="password1" id="password1" class="form-control" name="password1" placeholder="Enter password" required>
+  </div>
+  <div class="form-group">
+    <label for="password2">Password</label>
+    <input type="password" [formControl]="password2" id="password2" class="form-control" name="password2" placeholder="Enter password" required>
+  </div>
+  <div [hidden]="password1.valid || password2.valid || password1.pristine && password2.pristine " class="alert alert-danger">
+    Password is required
+  </div>
+  <div [hidden]="password1.valid && password2.valid && password1.value === password2.value || password1.pristine && password2.pristine" class="alert alert-danger">
+    Passwords must match
+  </div>
+  <div [innerText]="message" [hidden]="message.trim().length < 1" class="alert alert-danger">
 
-<a class="btn btn-primary">Save</a>
+  </div>
+  <button type="Submit" class="btn btn-primary">Register</button>
+</form>

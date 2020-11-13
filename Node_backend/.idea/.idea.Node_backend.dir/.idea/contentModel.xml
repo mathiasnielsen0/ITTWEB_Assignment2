@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\tsmoe\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\tsmoe\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_.19.01" t="ExcludeRecursive" />
+    <e p="C:\Users\tsmoe\Documents\repos\Web-assignment-2\ITTWEB_Assignment2\Node_backend" t="IncludeFlat">
+      <e p="node_modules\bcrypt" t="IncludeRecursive" />
+      <e p="node_modules\body-parser" t="IncludeRecursive" />
+      <e p="node_modules\cookie-parser" t="IncludeRecursive" />
+      <e p="node_modules\debug" t="IncludeRecursive" />
+      <e p="node_modules\dotenv" t="IncludeRecursive" />
+      <e p="node_modules\express" t="IncludeRecursive" />
+      <e p="node_modules\express-jwt" t="IncludeRecursive" />
+      <e p="node_modules\http-errors" t="IncludeRecursive" />
+      <e p="node_modules\jquery" t="IncludeRecursive" />
+      <e p="node_modules\jsonwebtoken" t="IncludeRecursive" />
+      <e p="node_modules\mongodb" t="IncludeRecursive" />
+      <e p="node_modules\mongoose" t="IncludeRecursive" />
+      <e p="node_modules\morgan" t="IncludeRecursive" />
+    </e>
+  </component>
+</project>
