@@ -9,6 +9,7 @@ var bodyParser = require("body-parser")
 var usersRouter = require('./routes/users');
 var workoutRouter = require('./routes/workout');
 var exerciseRouter = require('./routes/exercise');
+var logRouter = require('./routes/log');
 var db = require('./models/db');
 
 
@@ -32,6 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user', usersRouter);
 app.use('/workout', workoutRouter);
 app.use('/exercise', exerciseRouter);
+app.use('/log', logRouter);
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());

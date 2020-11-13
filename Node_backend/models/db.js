@@ -23,12 +23,18 @@ var WorkoutSchema = new Schema({
     exercises: [ExerciseSchema]
 })
 
+var LogSchema = new Schema({
+    createdAt: Date,
+    workout: WorkoutSchema,
+})
+
 var UserSchema = new Schema({
     email: { type: String, required: true , unique: true, index: true},
     name: { type: String, required: false},
     password: { type: String, required: true },
     exercises: [ExerciseSchema],
-    workouts: [WorkoutSchema]
+    workouts: [WorkoutSchema],
+    logs: [LogSchema],
 });
 
 UserSchema.methods.generateJwt = function () {
@@ -46,6 +52,7 @@ UserSchema.methods.generateJwt = function () {
 module.exports.User = mongoose.model('User', UserSchema);
 module.exports.Exercise = mongoose.model('Exercise', ExerciseSchema);
 module.exports.Workout = mongoose.model('Workout', WorkoutSchema);
+module.exports.Log = mongoose.model('Logs', LogSchema);
 
 mongoose.connection.on('connected', () => {
     console.log(`Mongoose connected to ${uri}`);
