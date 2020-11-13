@@ -31,4 +31,9 @@ export class ExerciseService {
     const url = "http://localhost:3000/exercise/list";
     return this.http.get<{ exercises: Exercise[] }>(url);
   }
+
+  public getExercise(id: string): Observable<{ exercise : Exercise }> {
+    const url = "http://localhost:3000/exercise/details?id=" + id;
+    return this.http.get<{ exercise: Exercise }>(url);
+  }
 }

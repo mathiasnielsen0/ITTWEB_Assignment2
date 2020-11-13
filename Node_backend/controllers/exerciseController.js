@@ -14,6 +14,7 @@ module.exports.listExercises = async function (req, res) {
             }
         }
     
+        console.log(exercises);
         res.status(200);
         res.json({
             "exercises" : exercises
@@ -34,7 +35,7 @@ module.exports.addExercise = async (req,res) => {
         
         user.exercises.push(exercise);
 
-        // Save the new model instance, passing a callback
+        // Save the new model instance, passing a callback 
         try {
             await user.save();
             res.status(200);
@@ -50,15 +51,22 @@ module.exports.addExercise = async (req,res) => {
 /* POST add exercise form */
 module.exports.details = async (req,res) => {
     console.log("exercisecontroller details GET")
+    console.log(req.query.id);
+    let exercises = [];
 
-    let exerciseId = req.query.exerciseId;
-    console.log("Exercise id: " + exerciseId);
-    authhandler._getAuthor(req, res, async function(req, res, userId) {
-        let user = await db.User.findById(userId).exec();
+    db.User.find().then((users) => {
+        for(let i = 0; i < users.length; i ++){
+            if(users[i].exercises !== undefined){
+                for (let j = 0; j < users[i].exercises.length; j++){
+                    exercises.push(users[i].exercises[j]);
+                }
+            }
+        }
 
-        let exercise = user.exercises.id(exerciseId);
+        let exercise = exercises.find(e => e._id == req.query.id);
+
+
         console.log(exercise);
-
         res.status(200);
         res.json({
             "exercise" : exercise
