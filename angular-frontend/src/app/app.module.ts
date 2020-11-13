@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { ExerciseComponent } from './exercise/exercise.component';
 import { AddexerciseComponent } from './addexercise/addexercise.component';
+import { ExercisedetailsComponent } from './exercisedetails/exercisedetails.component';
 import { AddworkoutComponent } from './addworkout/addworkout.component';
 import { RegisterComponent } from './register/register.component';
 import { WorkoutComponent } from './workout/workout.component';
@@ -21,6 +22,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ExerciseComponent,
     WorkoutComponent,
     AddexerciseComponent,
+    ExercisedetailsComponent,
     AddworkoutComponent,
     LoginComponent,
     RegisterComponent,
@@ -33,6 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     RouterModule.forRoot([
       {path: "exercise", component : ExerciseComponent },
+      {path: "exercise-details/:id", component : ExercisedetailsComponent },
       {path: "exercise/add", component : AddexerciseComponent },
       {path: "workout", component : WorkoutComponent },
       {path: "workout/add", component : AddworkoutComponent },

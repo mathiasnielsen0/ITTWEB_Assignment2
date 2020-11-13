@@ -13,7 +13,7 @@ router.post('/add', auth, exerciseController.addExercise);
 
 router.get('/list', exerciseController.listExercises);
 
-router.get('/details', auth, exerciseController.details);
+router.get('/details', exerciseController.details);
 
 router.post('/save', auth, exerciseController.save);
 
