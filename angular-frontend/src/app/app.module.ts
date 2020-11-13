@@ -21,9 +21,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     BrowserModule,
     RouterModule.forRoot([
       {path: "exercise", component : ExerciseComponent },
-      {path: "addexercise", component : AddexerciseComponent },
+      {path: "exercise/add", component : AddexerciseComponent },
       {path: "workout", component : WorkoutComponent },
-      {path: "addworkout", component : AddworkoutComponent },
+      {path: "workout/add", component : AddworkoutComponent },
       {path: "login", component : LoginComponent },
       {path: "register", component : RegisterComponent },
       {path: '', redirectTo: '/workout', pathMatch: 'full'},
