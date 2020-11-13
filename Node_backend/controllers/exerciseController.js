@@ -3,19 +3,22 @@ let authhandler = require("../AuthHandler");
 
 /* GET list of exercises */
 module.exports.listExercises = async function (req, res) {
-    console.log("exercisecontroller GET")
-    
-    // if(!isLoggedIn(req,res))
-    //     return;
-    if(false){}
-    else 
-    {
-        res.json({
-            userExercises
-        });
+    let exercises = [];
 
-        return;
-    }
+    db.User.find().then((users) => {
+        for(let i = 0; i < users.length; i ++){
+            if(users[i].exercises !== undefined){
+                for (let j = 0; j < users[i].exercises.length; j++){
+                    exercises.push(users[i].exercises[j]);
+                }
+            }
+        }
+    
+        res.status(200);
+        res.json({
+            "exercises" : exercises
+        });
+    });
 };
 
 //Post 
