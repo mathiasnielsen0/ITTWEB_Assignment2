@@ -2,9 +2,12 @@
 <h2>Get your work on, and workout with inspiration of tons of workouts created by other users</h2>
 
 <h3 class="bold">Workouts</h3>
+<input id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
 <div *ngFor="let workout of workouts; let i = index">
-    <button class="collapsible">{{ workout.name }}</button>
+    <button class="collapsible"><p class="workout-name font-weight-bold d-inline-block">Name: <br> </p>{{ workout.name }}</button>
     <div class="content">
-        <p>{{ workout.exercises[i]?.name }}</p>
+        <div *ngFor="let exercise of workout.exercises; let j = index">
+            <p>Exercise: {{ exercise?.name }}</p>
+        </div>
     </div>
 </div>
