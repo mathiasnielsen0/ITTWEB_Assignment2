@@ -34,7 +34,6 @@ export class AddworkoutComponent implements OnInit {
   }
 
   addExercise(e: Exercise){
-    alert(e._id);
   }
 
 }
