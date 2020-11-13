@@ -1,7 +1,10 @@
 <h1>Welcome to WorkIt</h1>
 <h2>Get your work on, and workout with inspiration of tons of workouts created by other users</h2>
 
-<h3 class="bold">Workouts</h3>
+<div class="header-container">
+    <h2 class="bold">Workouts</h2>
+    <a class="btn btn-primary" routerLink="/workout/add">Add workout</a>
+</div>
 <input id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
 <div *ngFor="let workout of workouts; let i = index">
     <button class="collapsible"><p class="workout-name font-weight-bold d-inline-block">Name: <br> </p>{{ workout.name }}</button>

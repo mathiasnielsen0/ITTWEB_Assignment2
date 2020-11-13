@@ -9,7 +9,6 @@ import { AddexerciseComponent } from './addexercise/addexercise.component';
 import { ExercisedetailsComponent } from './exercisedetails/exercisedetails.component';
 import { AddworkoutComponent } from './addworkout/addworkout.component';
 import { RegisterComponent } from './register/register.component';
-import { WorkoutComponent } from './workout/workout.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { FrontPageComponent } from './front-page/front-page.component';
@@ -21,7 +20,6 @@ import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
   declarations: [
     AppComponent,
     ExerciseComponent,
-    WorkoutComponent,
     AddexerciseComponent,
     ExercisedetailsComponent,
     AddworkoutComponent,
@@ -38,7 +36,6 @@ import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
       {path: "exercise", component : ExerciseComponent },
       {path: "exercise-details/:id", component : ExercisedetailsComponent },
       {path: "exercise/add", component : AddexerciseComponent },
-      {path: "workout", component : WorkoutComponent },
       {path: "workout/add", component : AddworkoutComponent },
       {path: "login", component : LoginComponent },
       {path: "register", component : RegisterComponent },

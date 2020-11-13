@@ -16,22 +16,22 @@
 
 <div class="even-spacing">
     <h4>Add workout program</h4>
-    <a class="btn btn-outline-dark" routerLink="/workout">Go back</a>
+    <a class="btn btn-outline-dark" routerLink="/front-page">Go back</a>
 </div>
 
 <div class="panel panel-default panel-body mt-3">
     <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter name">
+        <input type="text" [formControl]="name" class="form-control" id="name" name="name" aria-describedby="nameHelp" placeholder="Enter name">
     </div>
     <label>Pick exercises</label>
     <div class="exercises-picker-box mb-4">
         <div id="exercises-picker-left">
+            <div *ngFor="let e of exercises; index as i" (click)="addExercise(e)" class="exercises-picker-item not-added centerize-content">
+                {{ e.name }} 
+            </div>
         </div>
         <div class="exercises-picker-controls">
-            <a id="remove-exercise-btn" data-isdetails="false" title="Remove exercise from workout"
-                class="btn mb-3 btn-outline-dark"><i class="fa fa-chevron-left"></i>
-            </a>
             <a id="add-exercise-btn" data-isdetails="false" title="Add exercise to workout"
                 class="btn btn-outline-dark"><i class="fa fa-chevron-right"></i></a>
         </div>
@@ -40,3 +40,5 @@
     </div>
     <a type="button" id="create-btn" class="btn btn-primary">Create</a>
 </div>
+
+  
