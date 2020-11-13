@@ -15,21 +15,27 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AuthInterceptor} from './AuthService/AuthIntercepter';
 import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatCardModule} from '@angular/material/card';
+import {MatSelectModule} from "@angular/material/select";
+import {MatTabsModule} from "@angular/material/tabs";
+import {MatTableModule} from "@angular/material/table";
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {LogComponent} from "./log/log.component";
+import {LogAddComponent} from "./logAdd/log.add.component";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ExerciseComponent,
-    AddexerciseComponent,
-    ExercisedetailsComponent,
-    AddworkoutComponent,
-    LoginComponent,
-    RegisterComponent,
-    FrontPageComponent,
-    PageNotFoundComponent
-  ],
+
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatCardModule,
+    MatSelectModule,
+    MatTabsModule,
+    MatTableModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
@@ -38,6 +44,8 @@ import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
       {path: "exercise/add", component : AddexerciseComponent },
       {path: "workout/add", component : AddworkoutComponent },
       {path: "login", component : LoginComponent },
+      {path: "log", component: LogComponent},
+      {path: "log/add", component: LogAddComponent},
       {path: "register", component : RegisterComponent },
       {path: 'front-page', component: FrontPageComponent},
       {path: '', redirectTo: '/front-page', pathMatch: 'full'},
@@ -57,6 +65,19 @@ import {TokenExpiredInterceptor} from './AuthService/TokenExpiredInterceptor';
       multi: true
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  declarations: [
+    AppComponent,
+    ExerciseComponent,
+    AddexerciseComponent,
+    ExercisedetailsComponent,
+    AddworkoutComponent,
+    LoginComponent,
+    RegisterComponent,
+    FrontPageComponent,
+    PageNotFoundComponent,
+    LogComponent,
+    LogAddComponent
+  ],
 })
 export class AppModule { }

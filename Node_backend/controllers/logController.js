@@ -6,8 +6,7 @@ module.exports.get = async function (req, res) {
     authhandler._getAuthor(req, res, async function(req, res, userId) {
 
         let user = await db.User.findById(userId).exec();
-    
-        console.log(exercises);
+        
         res.status(200);
         res.json({
             "logs" : user.logs

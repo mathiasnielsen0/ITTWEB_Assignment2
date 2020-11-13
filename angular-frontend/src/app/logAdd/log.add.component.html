@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-title>
+    Log a workout
+  </mat-card-title>
+</mat-card>
+<form class="mt-5" (ngSubmit)="submit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Select a workout</mat-label>
+    <mat-select [formControl]="select">
+      <mat-option *ngFor="let workout of workouts" [value]="workout._id"> {{workout.name}} </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    <button type="submit" mat-raised-button color="primary">Log workout</button>
+  </div>
+  <div [hidden]="message.length < 1" class="alert alert-danger">
+      {{message}}
+  </div>
+</form>
