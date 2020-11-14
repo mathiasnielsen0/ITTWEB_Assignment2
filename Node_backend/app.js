@@ -28,7 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 //app.use(express.static(path.join(__dirname, 'public')));
 // Serve static files from the Angular frontend app
-app.use(express.static(path.join(__dirname, '../angular-frontend/dist')))
+app.use(express.static(path.join(__dirname, '../angular-frontend/dist/angular-frontend')))
 
 // AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
 app.get('*', (req, res) => {
