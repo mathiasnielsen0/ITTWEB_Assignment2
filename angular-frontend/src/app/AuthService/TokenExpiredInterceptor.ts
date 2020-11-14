@@ -3,6 +3,7 @@ import {Observable} from 'rxjs';
 import {AuthService} from './AuthService';
 import {Router} from '@angular/router';
 import {Injectable} from '@angular/core';
+import { finalize, tap } from 'rxjs/operators';
 
 @Injectable()
 export class TokenExpiredInterceptor implements HttpInterceptor {
@@ -11,17 +12,21 @@ export class TokenExpiredInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     let observable: Observable<HttpEvent<any>>;
-    observable = next.handle(request);
-    observable.subscribe({
-      next: value => {
-      },
-      error: err => {
-        const response = err as HttpErrorResponse;
-        if (response.status === 401) {
-          this.router.navigate(['/login']);
+    return next.handle(request).pipe(
+      tap(
+        event => {/**console.log("Do nothing") */},
+          // Operation failed; error is an HttpErrorResponse
+        error => {
+          console.log("ERRRRROR")
+          const response = error as HttpErrorResponse;
+          if (response.status === 401) {
+            this.router.navigate(['/login']);
+          }
         }
-      }
-    });
-    return observable;
+      ),
+      finalize(() => {
+
+      })
+    )
   }
 }
