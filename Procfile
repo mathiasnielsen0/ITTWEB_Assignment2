@@ -1,0 +1,1 @@
+worker: cd Node_backend && npm run start
