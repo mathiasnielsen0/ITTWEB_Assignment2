@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendUrl: 'http://pure-oasis-57013.herokuapp.com/'
+  backendUrl: 'https://pure-oasis-57013.herokuapp.com/'
 };
 
 /*
