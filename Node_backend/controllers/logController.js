@@ -35,13 +35,10 @@ module.exports.add = async (req,res) => {
                     }
                 }
             }
-
-
             //console.log(req.body)
             let workout = allWorkouts.find(w => w._id == workoutId);
             log.workout = workout;
             user.logs.push(log);
-
             // Save the new model instance, passing a callback 
             try {
                 await user.save();
