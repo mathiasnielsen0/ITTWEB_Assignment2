@@ -17,24 +17,8 @@ export class FrontPageComponent implements OnInit {
 
   ngOnInit(): void {
     this._http.getAllWorkouts().subscribe(r => this.workouts = r.workouts);
-    window.setTimeout(() => {this.createFoldableButtons(); document.getElementById('search').addEventListener('keyup',(e) => {this.filter(e)});},200);
-
+    document.getElementById('search').addEventListener('keyup',(e) => {this.filter(e)});
     this.isLoggedIn = this._authService.isLoggedIn();
-  }
-
-  private createFoldableButtons(){
-    var coll = document.getElementsByClassName("collapsible");
-    for (let i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        var content = this.nextElementSibling;
-        if (content.style.display === "block") {
-          content.style.display = "none";
-        } else {
-          content.style.display = "block";
-        }
-      });
-    }
   }
 
   private filter(e:any){
