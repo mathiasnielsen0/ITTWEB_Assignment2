@@ -39,7 +39,7 @@ export class RegisterComponent implements OnInit {
           console.log(data);
           // @ts-ignore
           localStorage.setItem('token', data.token);
-          this.router.navigate(['/workout']);
+          this.router.navigate(['/front-page']);
         },
         error: err => {
           console.log(err);

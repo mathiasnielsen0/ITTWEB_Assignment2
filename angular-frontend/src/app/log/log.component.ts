@@ -20,10 +20,8 @@ export class LogComponent implements OnInit {
   ngOnInit(): void {
     this.client.get(environment.backendUrl + "log/list").subscribe({
       next: value => {
-        console.log(value);
         // @ts-ignore
         this.logs = Object.assign<Log[]>(value.logs);
-        console.log(this.logs);
       },
       error: err => {
         console.log(err);

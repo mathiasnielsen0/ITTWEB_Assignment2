@@ -19,11 +19,9 @@ export class LogAddComponent implements OnInit {
   }
 
   submit() {
-    const body = {workoutId: this.workouts[this.select.value]};
-    console.log(body);
+    const body = {workoutId: this.select.value};
     this.client.post(environment.backendUrl + "log/add", body).subscribe({
       next: value => {
-        console.log(value);
         this.router.navigate(["/log"]);
       },
       error: err => {
