@@ -3,7 +3,7 @@
     "Node_backend": "cd Node_backend && nodemon app.js",
     "dev": "concurrently --kill-others-on-fail \"npm run Node_backend\" \"npm run angular-frontend\"",
     "heroku-postbuild": "cd angular-frontend && npm install && npm run build",
-    "start": "node ./bin/www"
+    "start": "cd Node_backend && npm start"
   },
   "engines": { 
     "node": "^14.9.0",
