@@ -3,7 +3,7 @@
     "angular-frontend": "cd angular-frontend && npm start",
     "Node_backend": "cd Node_backend && nodemon app.js",
     "dev": "concurrently --kill-others-on-fail \"npm run Node_backend\" \"npm run angular-frontend\"",
-    "heroku-postbuild": "cd angular-frontend && npm install && npm run build",
+    "heroku-postbuild": "cd angular-frontend && npm install && npm run build --prod",
     "start": "cd Node_backend && npm start --unsafe-perm"
   },
   "engines": {
@@ -21,6 +21,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.7",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "@angular/cli": "~10.2.0"
   }
 }
