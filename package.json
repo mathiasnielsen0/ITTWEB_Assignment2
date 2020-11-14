@@ -1,0 +1,7 @@
+{"scripts": {
+    "angular-frontend": "cd angular-frontend && npm start",
+    "Node_backend": "cd Node_backend && nodemon app.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run Node_backend\" \"npm run angular-frontend\"",
+    "heroku-postbuild": "cd angular-frontend && npm install && npm run build"
+  }
+}
