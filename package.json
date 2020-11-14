@@ -1,12 +1,28 @@
-{"scripts": {
+{
+  "scripts": {
     "angular-frontend": "cd angular-frontend && npm start",
     "Node_backend": "cd Node_backend && nodemon app.js",
     "dev": "concurrently --kill-others-on-fail \"npm run Node_backend\" \"npm run angular-frontend\"",
     "heroku-postbuild": "cd angular-frontend && npm install && npm run build",
     "start": "cd Node_backend && npm start"
   },
-  "engines": { 
+  "engines": {
     "node": "^14.9.0",
     "npm": "^6.14.5"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "express-jwt": "^6.0.0",
+    "http-errors": "~1.6.3",
+    "jquery": "^3.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.6.2",
+    "mongoose": "^5.10.7",
+    "morgan": "~1.9.1"
   }
 }
