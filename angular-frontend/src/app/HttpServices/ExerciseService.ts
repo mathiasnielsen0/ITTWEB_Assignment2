@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import Exercise from "../models/Exercise"
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ExerciseService {
 
-  baseUrl = 'http://localhost:3000/exercise/'
+  baseUrl = environment.backendUrl + 'exercise/'
 
   constructor(private http: HttpClient) {
   }
@@ -23,17 +24,17 @@ export class ExerciseService {
 
     const body = JSON.stringify(exercise);
 
-    return this.http.post('http://localhost:3000/exercise/add',body,options).toPromise();
+    return this.http.post(environment.backendUrl + 'exercise/add',body,options).toPromise();
   }
 
 
   public getExercises(): Observable<{ exercises : Exercise[] }> {
-    const url = "http://localhost:3000/exercise/list";
+    const url = environment.backendUrl + "exercise/list";
     return this.http.get<{ exercises: Exercise[] }>(url);
   }
 
   public getExercise(id: string): Observable<{ exercise : Exercise }> {
-    const url = "http://localhost:3000/exercise/details?id=" + id;
+    const url = environment.backendUrl + "exercise/details?id=" + id;
     return this.http.get<{ exercise: Exercise }>(url);
   }
 }
