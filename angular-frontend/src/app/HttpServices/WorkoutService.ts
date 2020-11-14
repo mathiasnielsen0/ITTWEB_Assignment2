@@ -28,11 +28,11 @@ export default class WorkoutService {
 
     const body = JSON.stringify(workout);
 
-    return this.http.post('http://localhost:3000/workout/add', body, options).toPromise();
+    return this.http.post(environment.backendUrl + 'workout/add', body, options).toPromise();
   }
 
   public getWorkout(id: string): Observable<{ workout : Workout }> {
-    const url = "http://localhost:3000/workout/details?id=" + id;
+    const url = environment.backendUrl + "workout/details?id=" + id;
     return this.http.get<{ workout: Workout }>(url);
   }
 }
