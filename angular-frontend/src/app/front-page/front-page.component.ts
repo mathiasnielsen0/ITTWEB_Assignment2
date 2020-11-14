@@ -12,6 +12,7 @@ import {AuthService} from '../AuthService/AuthService'
 export class FrontPageComponent implements OnInit {
   workouts:Workout[] = []
   isLoggedIn:boolean = false;
+  panelOpenState = false;
   constructor(private _http: WorkoutService, private _authService: AuthService) { }
 
   ngOnInit(): void {
@@ -37,10 +38,10 @@ export class FrontPageComponent implements OnInit {
   }
 
   private filter(e:any){
-    var collapsible = document.getElementsByClassName("collapsible");
+    var workouts = document.getElementsByClassName("workout");
     let searchText = (document.getElementById('search') as HTMLInputElement).value
-    for (let i = 0; i < collapsible.length; i++) {
-      const element = collapsible[i];
+    for (let i = 0; i < workouts.length; i++) {
+      const element = workouts[i];
       if (this.workouts[i].name.toUpperCase().indexOf(searchText.toUpperCase()) > -1) {
         (element as HTMLButtonElement).style.display = "";
       } else {

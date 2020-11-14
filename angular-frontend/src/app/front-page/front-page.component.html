@@ -6,11 +6,22 @@
     <a *ngIf="isLoggedIn" class="btn btn-primary" routerLink="/workout/add">Add workout</a>
 </div>
 <input id="search" class="form-control" type="text" placeholder="Search" aria-label="Search">
-<div *ngFor="let workout of workouts; let i = index">
-    <button class="collapsible"><p class="workout-name font-weight-bold d-inline-block">Name: <br> </p>{{ workout.name }}</button>
-    <div class="content">
-        <div *ngFor="let exercise of workout.exercises; let j = index">
-            <p>Exercise: {{ exercise?.name }}</p>
-        </div>
+
+<mat-accordion>
+    <div *ngFor="let workout of workouts; let i = index">
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                (closed)="panelOpenState = false" class="workout">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ workout.name }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        {{workout.exercises.length}} exercises
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <div *ngFor="let exercise of workout.exercises; let j = index">
+                    <p>{{j}}: {{ exercise?.name }}</p>
+                </div>
+            </mat-expansion-panel>        
     </div>
-</div>
+</mat-accordion>

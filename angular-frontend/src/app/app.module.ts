@@ -22,6 +22,7 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatTableModule} from "@angular/material/table";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
+import {MatExpansionModule} from '@angular/material/expansion';
 import {LogComponent} from "./log/log.component";
 import {LogAddComponent} from "./logAdd/log.add.component";
 
@@ -36,6 +37,8 @@ import {LogAddComponent} from "./logAdd/log.add.component";
     MatTabsModule,
     MatTableModule,
     MatButtonModule,
+    FormsModule,
+    MatExpansionModule,
     ReactiveFormsModule,
     HttpClientModule,
     RouterModule.forRoot([
