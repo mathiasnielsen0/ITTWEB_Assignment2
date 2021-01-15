@@ -35,7 +35,7 @@ app.use('/user', usersRouter);
 app.use('/workout', workoutRouter);
 app.use('/exercise', exerciseRouter);
 app.use('/log', logRouter);
-// AFTER defining routes: Anything that doesn't match what's above, send back index.html; (the beginning slash ('/') in the string is important!)
+// AFTER defining routes: Anything that doesn't match what's above, send back index.html;
 app.get('*', (req, res) => {
   res.sendFile(path.join('../angular-frontend/dist/angular-frontend/index.html'))
 })
