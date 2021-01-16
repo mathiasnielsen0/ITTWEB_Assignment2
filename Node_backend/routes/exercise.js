@@ -9,12 +9,12 @@ algorithms: ['HS256'],
 userProperty: 'payload'
 });
 
-router.post('/add', auth, exerciseController.addExercise);
+router.post('/', auth, exerciseController.addExercise);
 
-router.get('/list', exerciseController.listExercises);
+router.get('/', exerciseController.listExercises);
 
-router.get('/details', exerciseController.details);
+router.get('/:id', exerciseController.details);
 
-router.post('/save', auth, exerciseController.save);
+router.put('/', auth, exerciseController.save);// not used in frontend
 
 module.exports = router; 

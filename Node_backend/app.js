@@ -12,7 +12,7 @@ var logRouter = require('./routes/log');
 
 
 var allowCrossDomain = function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://pure-oasis-57013.herokuapp.com/');
+  res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
   res.header('Access-Control-Allow-Headers', '*');
 
@@ -26,19 +26,12 @@ app.use(allowCrossDomain);
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(express.static(path.join(__dirname, 'public')));
-// Serve static files from the Angular frontend app
-app.use(express.static(path.join(__dirname, '../angular-frontend/dist/angular-frontend')))
-
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/user', usersRouter);
 app.use('/workout', workoutRouter);
 app.use('/exercise', exerciseRouter);
 app.use('/log', logRouter);
-// AFTER defining routes: Anything that doesn't match what's above, send back index.html;
-app.get('*', (req, res) => {
-  res.sendFile(path.join('../angular-frontend/dist/angular-frontend/index.html'))
-})
+
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 

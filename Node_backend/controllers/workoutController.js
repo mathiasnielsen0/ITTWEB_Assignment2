@@ -114,6 +114,7 @@ module.exports.addWorkout = async function(req, res) {
         try {
             await user.save();
             console.log("Everything was succesful");
+            res.status(201);
             res.json({success: true});
         } catch (error) {
             console.log(error)

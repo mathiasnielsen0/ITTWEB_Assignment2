@@ -20,7 +20,7 @@ export class LogAddComponent implements OnInit {
 
   submit() {
     const body = {workoutId: this.select.value};
-    this.client.post(environment.backendUrl + "log/add", body).subscribe({
+    this.client.post(environment.backendUrl + "log/", body).subscribe({
       next: value => {
         this.router.navigate(["/log"]);
       },
@@ -33,7 +33,7 @@ export class LogAddComponent implements OnInit {
   ngOnInit(): void {
 
     //listUser
-    this.client.get(environment.backendUrl + "workout/list").subscribe({
+    this.client.get(environment.backendUrl + "workout/").subscribe({
       next: value => {
 
         // @ts-ignore

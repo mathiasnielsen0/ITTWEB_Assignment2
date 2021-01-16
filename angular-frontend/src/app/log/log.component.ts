@@ -18,7 +18,7 @@ export class LogComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.client.get(environment.backendUrl + "log/list").subscribe({
+    this.client.get(environment.backendUrl + "log/").subscribe({
       next: value => {
         // @ts-ignore
         this.logs = Object.assign<Log[]>(value.logs);

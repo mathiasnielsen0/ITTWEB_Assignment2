@@ -42,7 +42,7 @@ module.exports.add = async (req,res) => {
             // Save the new model instance, passing a callback 
             try {
                 await user.save();
-                res.status(200);
+                res.status(201);
                 res.json({"message": "success"})
             } catch (error) {
                 console.log(error)

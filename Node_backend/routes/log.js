@@ -10,10 +10,10 @@ var auth = jwt({
 });
 
 /* POST add workout form */ 
-router.post('/add', auth, logController.add);  
+router.post('/', auth, logController.add);  
 
 /* POST add workout form */
-router.get('/list', auth, logController.get); 
+router.get('/', auth, logController.get); 
 
 
 module.exports = router;

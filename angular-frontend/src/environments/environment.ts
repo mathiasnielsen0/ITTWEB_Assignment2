@@ -4,7 +4,8 @@
 
 export const environment = {
   production: true,
-  backendUrl: 'https://pure-oasis-57013.herokuapp.com/'
+  backendUrl: 'http://localhost:3000/'
+  // backendUrl: 'http://pure-oasis-57013.herokuapp.com/'
 };
 
 /*

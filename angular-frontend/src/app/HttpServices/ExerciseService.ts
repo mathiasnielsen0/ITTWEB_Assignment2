@@ -24,17 +24,17 @@ export class ExerciseService {
 
     const body = JSON.stringify(exercise);
 
-    return this.http.post(environment.backendUrl + 'exercise/add',body,options).toPromise();
+    return this.http.post(environment.backendUrl + 'exercise/',body,options).toPromise();
   }
 
 
   public getExercises(): Observable<{ exercises : Exercise[] }> {
-    const url = environment.backendUrl + "exercise/list";
+    const url = environment.backendUrl + "exercise/";
     return this.http.get<{ exercises: Exercise[] }>(url);
   }
 
   public getExercise(id: string): Observable<{ exercise : Exercise }> {
-    const url = environment.backendUrl + "exercise/details?id=" + id;
+    const url = environment.backendUrl + "exercise/" + id;
     return this.http.get<{ exercise: Exercise }>(url);
   }
 }

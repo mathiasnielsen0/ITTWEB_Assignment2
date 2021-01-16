@@ -9,16 +9,13 @@ var auth = jwt({
     userProperty: 'payload'
 });
 
-/* POST add workout form */ 
-router.post('/add', auth, workoutController.addWorkout);  
+/* POST add workout */ 
+router.post('/', auth, workoutController.addWorkout);  
 
-/* POST add workout form */
-router.post('/addExercise', auth, workoutController.addExercise); 
+/* PUT update exercises in workout */
+router.put('/:id', auth, workoutController.addExercise); // not used in frontend
 
-/* GET users listing. */
-router.get('/listUser', auth, workoutController.listUserWorkouts);
-
-/* GET users listing. */
-router.get('/list', workoutController.listWorkouts);
+/* GET workouts */
+router.get('/', workoutController.listWorkouts);
 
 module.exports = router;

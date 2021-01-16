@@ -14,7 +14,7 @@ export default class WorkoutService {
   }
   
   getAllWorkouts() : Observable<{workouts: Workout[]}>{
-      return this.http.get<{workouts: Workout[]}>(environment.backendUrl + 'workout/list');
+      return this.http.get<{workouts: Workout[]}>(environment.backendUrl + 'workout/');
   }
 
 
@@ -28,11 +28,11 @@ export default class WorkoutService {
 
     const body = JSON.stringify(workout);
 
-    return this.http.post(environment.backendUrl + 'workout/add', body, options).toPromise();
+    return this.http.post(environment.backendUrl + 'workout/', body, options).toPromise();
   }
 
   public getWorkout(id: string): Observable<{ workout : Workout }> {
-    const url = environment.backendUrl + "workout/details?id=" + id;
+    const url = environment.backendUrl + "workout/" + id;
     return this.http.get<{ workout: Workout }>(url);
   }
 }

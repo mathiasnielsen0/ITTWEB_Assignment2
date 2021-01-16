@@ -10,13 +10,9 @@ userProperty: 'payload'
 });
 
 /* POST add user form */
-router.post('/register', userController.register);
+router.post('/', userController.register);
 
 router.post('/login', userController.login);
-
-router.get('/logout', userController.Logout);
-
-router.get('/get', auth, userController.get);
 
 
 module.exports = router;

@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
         })
       };
 
-      this.client.post(environment.backendUrl + 'user/register', user, httpOptions).subscribe({
+      this.client.post(environment.backendUrl + 'user/', user, httpOptions).subscribe({
         next: data => {
           console.log(data);
           // @ts-ignore
